@@ -1,16 +1,35 @@
 {% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+<link href="/static/base.css" rel="stylesheet">
 
 <html>
-    <head>
-        <title>To-Do lists</title>
-    </head>
-    <body>
-        <h1>{% block header_text %}{% endblock %}</h1>
-        <form method="POST" action={% block form_action %}{% endblock %}>
-            <input name="item_text" id="id_new_item" placeholder="Enter a to-do item"/>
-            {% csrf_token %}
-        </form>
-        {% block table %}
-        {% endblock %}
-    </body>
+<head>
+    <title>To-Do lists</title>
+</head>
+<body>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-8 offset-md-2 jumbotron">
+                <div class="text-center">
+                    <h1>{% block header_text %}{% endblock %}</h1>
+                    <form method="POST" action="{% block form_action %}{% endblock %}">
+                        <input name="item_text" id="id_new_item"
+                               placeholder="Enter a to-do item"
+                               class="form-control input-lg"
+                        />
+                        {% csrf_token %}
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                {% block table %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+</body>
 </html>
