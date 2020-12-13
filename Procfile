@@ -1,0 +1,1 @@
+web: gunicorn obey_the_goat.wsgi --log-file -
